@@ -6,7 +6,7 @@
 /*   By: revan-wy <revan-wy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 20:02:19 by revan-wy          #+#    #+#             */
-/*   Updated: 2018/08/10 09:48:28 by revan-wy         ###   ########.fr       */
+/*   Updated: 2018/08/10 16:38:14 by revan-wy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,38 +74,25 @@ void	read_map(int **map, char **argv, t_arr *arr, t_env *env)
 	char	*pnl;
 	int		res;
 	char	**one_line_fields;
-	int		run = 0;
-	int		target = 1;
 
-	env->i = 0;
+	env->i = -1;
 	env->j = 0;
 	fd = open(argv[1], O_RDONLY);
 	res = 1;
-	while (res && env->i < arr->rowmax)
+	while (res && ++env->i < arr->rowmax)
 	{
 		env->j = 0;
 		res = get_next_line(fd, &pnl);
-		//while (run == target)
-		//	ft_putstr("rm 89\n");
 		one_line_fields = ft_strsplit(pnl, ' ');
-		while (run == target)
-			ft_putstr("rm 92\n");
 		while (*one_line_fields != NULL && env->j < arr->colmax)
 		{
 			map[env->i][env->j] = ft_atoi(one_line_fields[env->j]);
-			while (run == target)
-				ft_putstr("rm 97\n");
+			free(one_line_fields[env->j]);
 			if (abs(env->i - env->j - map[env->i][env->j++]) >
 					abs(arr->max_z))
-				arr->max_z = env->i - env->j - map[env->i][env->j - 1] + 1;
-			while (run == target)
-				ft_putstr("rm 102\n");
+				arr->max_z = env->i - (env->j - 1) - map[env->i][env->j - 1];
 		}
 		free(pnl);
-		env->i++;
-		run++;
+		free(one_line_fields);
 	}
-	close(fd);
-	while (1)
-		ft_putstr("rm 110\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: revan-wy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: revan-wy <revan-wy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:59:01 by revan-wy          #+#    #+#             */
-/*   Updated: 2018/08/07 20:47:28 by revan-wy         ###   ########.fr       */
+/*   Updated: 2018/08/10 17:17:56 by revan-wy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include "mlx.h"
 # include "libft/libft.h"
+# include <stdio.h>
 
 typedef struct	s_index
 {
@@ -65,7 +66,7 @@ typedef struct	s_env
 
 void			col_line_put(t_env *env, int j, int i, int **map);
 void			get_size_of_map(t_arr *arr, char **argv);
-int				key_event(int keycode, void *param);
+int				key_event(int keycode, int **param);
 void			line_put(t_env *env, t_coord coord);
 void			map_line_error(char **argv);
 void			print_map(t_arr *arr, int **map, t_env *env);

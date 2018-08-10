@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_put.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: revan-wy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: revan-wy <revan-wy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 19:31:22 by revan-wy          #+#    #+#             */
-/*   Updated: 2018/08/07 19:59:48 by revan-wy         ###   ########.fr       */
+/*   Updated: 2018/08/10 17:18:37 by revan-wy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	line_put(t_env *env, t_coord coord)
 	line.x = coord.x0;
 	line.y = coord.y0;
 	i = 1;
-	while (i <= coord.step)
+	while (i <= coord.step + 1)
 	{
 		mlx_pixel_put(env->gsci, env->window, line.x, line.y, 0x00FFFFFF);
 		line.x = line.x + line.dx;
